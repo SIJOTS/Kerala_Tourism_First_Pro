@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>sign in page</title>
+    <link rel="stylesheet" type: "text/css" href="css/style.css">
+    <link rel="stylesheet" type: "text/css" href="bootstrap.min.css">
+    <style>
+      /* Style all input fields */
+      
+      /* The message box is shown when the user clicks on the password field */
+      #message {
+        display:none;
+        background: #f1f1f1;
+        color: #000;
+        position: relative;
+        padding: 20px;
+        margin-top: 10px;
+      }
+      
+      #message p {
+        padding: 10px 35px;
+        font-size: 18px;
+      }
+      
+      /* Add a green text color and a checkmark when the requirements are right */
+      .valid {
+        color: rgb(24, 201, 24);
+      }
+      
+      .valid:before {
+        position: relative;
+        left: -35px;
+        content: "✔";
+      }
+      
+      /* Add a red text color and an "x" when the requirements are wrong */
+      .invalid {
+        color: red;
+      }
+      
+      .invalid:before {
+        position: relative;
+        left: -35px;
+        content: "✖";
+      }
+      </style>
+       
+</head>
+<body>
+<div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <a class="navbar-brand" href="#">kerala Tourism</a>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="#">sign up</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="login.html">log in</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link abled" href="#" tabindex="-1" aria-disabled="true">contect us</a>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+</div>
+
+<div class="col-lg-8 mymargin">
+  <form action="login.html" class="Signup">
+    <h2>New Account</h2>
+    <div class="Signup-minc">
+      <h6>Need an Account?
+        <a href="login.html">log in</a></h6>
+    </div>
+    <br>
+    <div class="Signup-cont">
+      <label>Username</label>
+      <br>
+      <input type="text" placeholder="Username">
+    </div>
+    <br>
+    <div class="Signup-cont">
+      <P>The password must have at least 8 characters, at least 1 digit(s), at least 1 lower case letter(s), at least 1 upper case letter(s), at least 1 non-alphanumeric character(s) such as as *, -, or #</P>
+      <label>Password</label>
+      <br>
+      <input type="password" id="test" placeholder="Password">
+    </div>
+    <div id="message">
+      <h6>Password must contain the following:</h6>
+      <div id="letter" class="invalid">A <b>lowercase</b> letter</div>
+      <div id="capital" class="invalid">A <b>capital (uppercase)</b> letter</div>
+      <div id="number" class="invalid">A <b>number</b></div>
+      <div id="length" class="invalid">Minimum <b>8 characters</b></div>
+    </div>
+    
+    
+    <br><br>
+    <div class="Signup-cont">
+      <label>Email Id</label>
+      <input type="email"placeholder="mail id"name=""> 
+    </div>
+    <br>
+    <div class="Signup-cont">
+      <label>
+        Gender
+      </label>
+      <input type="radio"name="gender">Male
+      <input type="radio"name="gender">Female
+      <input type="radio"name="gender">Other
+    </div>
+    <br>
+    <div class="Signup-cont">
+      <label>Phone No :</label>
+      <select>
+        <option>+91</option>
+        <option>+92</option>
+        <option>93</option>
+      </select>
+      <input type="number"placeholder="960***"name="">
+    </div>
+    <br>
+    <div>
+      <button id="Signup-button">Create my new account</button>
+    </div>
+    <br>
+    <div class="col-lg-4"></div>
+  </div>
+  </form>
+  <script src="form.js"></script>
+  <script>
+    var myInput = document.getElementById("test");
+    var letter = document.getElementById("letter");
+    var capital = document.getElementById("capital");
+    var number = document.getElementById("number");
+    var length = document.getElementById("length");
+    
+    // When the user clicks on the password field, show the message box
+    myInput.onfocus = function() {
+      document.getElementById("message").style.display = "block";
+    }
+    
+    // When the user clicks outside of the password field, hide the message box
+    myInput.onblur = function() {
+      document.getElementById("message").style.display = "none";
+    }
+    
+    // When the user starts to type something inside the password field
+    myInput.onkeyup = function() {
+      // Validate lowercase letters
+      var lowerCaseLetters = /[a-z]/g;
+      if(myInput.value.match(lowerCaseLetters)) {  
+        letter.classList.remove("invalid");
+        letter.classList.add("valid");
+      } else {
+        letter.classList.remove("valid");
+        letter.classList.add("invalid");
+      }
+      
+      // Validate capital letters
+      var upperCaseLetters = /[A-Z]/g;
+      if(myInput.value.match(upperCaseLetters)) {  
+        capital.classList.remove("invalid");
+        capital.classList.add("valid");
+      } else {
+        capital.classList.remove("valid");
+        capital.classList.add("invalid");
+      }
+    
+      // Validate numbers
+      var numbers = /[0-9]/g;
+      if(myInput.value.match(numbers)) {  
+        number.classList.remove("invalid");
+        number.classList.add("valid");
+      } else {
+        number.classList.remove("valid");
+        number.classList.add("invalid");
+      }
+      
+      // Validate length
+      if(myInput.value.length >= 8) {
+        length.classList.remove("invalid");
+        length.classList.add("valid");
+      } else {
+        length.classList.remove("valid");
+        length.classList.add("invalid");
+      }
+    }
+    </script>
+    
+</body>
+</html>
